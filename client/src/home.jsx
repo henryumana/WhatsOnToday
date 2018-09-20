@@ -71,7 +71,7 @@ class App extends Component {
     })
  }
 
- getCategory(categorySelected) {   
+ getCategory(categorySelected) {
     var proxyUrl = `https://cors-anywhere.herokuapp.com/`, targetUrl = `http://api.eventful.com/json/events/search?app_key=${API_KEY}&location=${this.state.lat}, ${this.state.lon}&within=14&t=today&q=${categorySelected}`
     fetch (proxyUrl + targetUrl)
     .then(res => res.json())
@@ -100,11 +100,12 @@ componentDidMount() {
 
  render() {
 
+
    var eventInfo = this.state.eventList.map((item) =>
-      [item.title, item.venue_name, item.longitude, item.latitude, item.start_time, item.description, item.id]);
+      [item.title, item.venue_name, item.longitude, item.latitude, item.start_time, item.description, item.id, item.venue_url]);
 
    var locations = eventInfo.map((location) =>
-      [location[3], location[2], location[0], location[1], location[5], location[6]]);
+      [location[3], location[2], location[0], location[1], location[5], location[6], location[7]]);
 
    return (
 
